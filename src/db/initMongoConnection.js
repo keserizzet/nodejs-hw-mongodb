@@ -12,7 +12,7 @@ async function initMongoConnection() {
     throw new Error('MongoDB bağlantı bilgileri eksik!');
   }
 
-  const uri = `mongodb+srv://izzetkeser359:EyLD98MhNShzUIxS@cluster0.u38pi7i.mongodb.net/contactsDB?retryWrites=true&w=majority`;
+  const uri = `mongodb+srv://izzetkeser359:EyLD98MhNShzUIxS@cluster0.u38pi7i.mongodb.net/contactsDB?retryWrites=true&w=majoritymongodb+srv://izzetkeser359:<db_password>@cluster0.apeivnl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
   await mongoose.connect(uri, {
     useNewUrlParser: true,
