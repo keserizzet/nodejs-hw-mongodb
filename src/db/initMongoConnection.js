@@ -12,12 +12,11 @@ async function initMongoConnection() {
     throw new Error('MongoDB bağlantı bilgileri eksik!');
   }
 
-  const uri = `mongodb+srv://izzetkeser359:<db_password>@cluster0.apeivnl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+  const uri = `mongodb+srv://${MONGODB_USER}:${encodeURIComponent(
+    MONGODB_PASSWORD
+  )}@${MONGODB_URL}/${MONGODB_DB}?retryWrites=true&w=majority`;
 
-  await mongoose.connect(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+  await mongoose.connect(uri);
 
   console.log('Mongo connection successfully established!');
 }
