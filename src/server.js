@@ -14,9 +14,10 @@ function setupServer() {
   app.use(pino);
   app.use(express.json());
 
-  app.get('/', handleGetAllContacts);
+  app.get('/', (req, res) => {
+    res.json({ message: 'Welcome to the Contacts API! Try /contacts' });
+  });
 
-  // Contacts endpoints
   app.get('/contacts', handleGetAllContacts);
   app.get('/contacts/:contactId', handleGetContactById);
 
