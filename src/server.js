@@ -1,4 +1,3 @@
-// src/server.js
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
@@ -14,6 +13,10 @@ function setupServer() {
   app.use(cors());
   app.use(pino);
   app.use(express.json());
+
+  app.get('/', (req, res) => {
+    res.json({ message: 'Welcome to the Contacts API! Try /contacts' });
+  });
 
   app.get('/contacts', handleGetAllContacts);
   app.get('/contacts/:contactId', handleGetContactById);
