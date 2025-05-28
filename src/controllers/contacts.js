@@ -20,18 +20,20 @@ async function handleGetContactById(req, res, next) {
     const { contactId } = req.params;
     const contact = await getContactById(contactId);
     if (!contact) {
+      // İşte burası: 404 + yalnızca message alanı
       return res.status(404).json({ message: 'Contact not found' });
     }
+    // Varsa 200 + detaylı yanıt
     return res.status(200).json({
       status: 200,
       message: `Successfully found contact with id ${contactId}!`,
       data: contact,
     });
   } catch (err) {
-    console.error('Error in handleGetContactById:', err);
-    return next(err);
+    next(err);
   }
 }
+
 
 module.exports = {
   handleGetAllContacts,
